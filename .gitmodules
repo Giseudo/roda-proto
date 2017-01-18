@@ -1,0 +1,6 @@
+[submodule "Lib/roda"]
+	path = lib/roda
+	url = git@github.com:Giseudo/roda.git
+[submodule "Lib/hump"]
+	path = lib/hump
+	url = https://github.com/vrld/hump.git

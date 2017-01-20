@@ -14,10 +14,10 @@ end
 
 function love.update(dt)
 	engine:update(dt)
-	game:update(dt)
 end
 
 function love.draw()
+	engine:draw()
 end
 
 function love.quit()

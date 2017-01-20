@@ -7,14 +7,24 @@ local Game = Class{
 function Game:init(bus)
 	self.bus = bus
 
-	self.bus:subscribe("input/key-up", function(payload) self:onKeyUp(payload) end)
+	self.bus:subscribe("update", function(event) self:update(event) end)
+	self.bus:subscribe("draw", function(event) self:draw(event) end)
+	self.bus:subscribe("input/key-press", function(event) self:keyPress(event) end)
+	self.bus:subscribe("input/key-up", function(event) self:keyUp(event) end)
 end
 
-function Game:update(dt)
+function Game:update(event)
 end
 
-function Game:onKeyUp(payload)
-	print("Player pressed: " .. payload)
+function Game:draw()
+end
+
+function Game:keyPress(event)
+	print("Player pressed:" .. event.key)
+end
+
+function Game:keyUp(event)
+	print("Player released:" .. event.key)
 end
 
 return Game

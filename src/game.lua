@@ -1,6 +1,8 @@
 local Class = require (LIB_PATH .. "hump.class")
 local Vector = require (LIB_PATH .. "hump.vector")
 local Button = require (RODA_PATH .. "gui.button")
+local Label = require (RODA_PATH .. "gui.label")
+local TextureSlice = require (RODA_PATH .. "render.texture.slice")
 
 local Game = Class{
 	bus = nil,
@@ -10,7 +12,16 @@ local Game = Class{
 function Game:init(bus)
 	self.bus = bus
 
-	self.button = Button(Vector(0, 0), 100, 20)
+	-- Button
+	self.button = Button(TextureSlice(
+		"lib/roda/assets/images/button.png",
+		8
+	))
+	self.button:setPadding(Vector(8, 8))
+
+	-- Label
+	local label = Label("Hello World!", self.button)
+	--label:setPadding(Vector(8, 8))
 
 	self.bus:subscribe("update", function(message) self:update(message) end)
 	self.bus:subscribe("camera/gui/draw", function(message) self:draw(message) end)
@@ -23,6 +34,11 @@ end
 
 function Game:draw()
 	self.button:draw()
+	--love.graphics.rectangle(
+	--	'fill',
+	--	0, 0,
+	--	5, 5
+	--)
 end
 
 function Game:keyPress(message)

@@ -4,3 +4,6 @@
 [submodule "Lib/hump"]
 	path = lib/hump
 	url = https://github.com/vrld/hump.git
+[submodule "lib/tiny-ecs"]
+	path = lib/tiny-ecs
+	url = https://github.com/bakpakin/tiny-ecs.git

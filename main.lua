@@ -8,8 +8,10 @@ local engine
 local game
 
 function love.load()
+	love.graphics.setDefaultFilter("nearest", "nearest", 0)
+
 	engine = Roda()
-	game = Game(engine.bus)
+	game = Game(engine)
 end
 
 function love.update(dt)

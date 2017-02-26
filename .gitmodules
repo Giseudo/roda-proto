@@ -7,3 +7,6 @@
 [submodule "lib/tiny-ecs"]
 	path = lib/tiny-ecs
 	url = https://github.com/bakpakin/tiny-ecs.git
+[submodule "lib/tiny"]
+	path = lib/tiny
+	url = https://github.com/bakpakin/tiny-ecs.git

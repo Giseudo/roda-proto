@@ -10,3 +10,6 @@
 [submodule "lib/tiny"]
 	path = lib/tiny
 	url = https://github.com/bakpakin/tiny-ecs.git
+[submodule "lib/bump"]
+	path = lib/bump
+	url = https://github.com/kikito/bump.lua.git

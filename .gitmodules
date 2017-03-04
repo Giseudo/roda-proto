@@ -13,3 +13,6 @@
 [submodule "lib/bump"]
 	path = lib/bump
 	url = https://github.com/kikito/bump.lua.git
+[submodule "lib/imgui"]
+	path = lib/imgui
+	url = https://github.com/slages/love-imgui.git

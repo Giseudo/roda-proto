@@ -8,10 +8,10 @@ local InputSystem = require (RODA_PATH .. "systems.input")
 local PhysicsSystem = require (RODA_PATH .. "systems.physics")
 local EditorSystem = require (RODA_PATH .. "systems.editor")
 
-local B2 = require (RODA_PATH .. "entities.b2")
-local Velvet = require (RODA_PATH .. "entities.velvet")
-local Forest = require (RODA_PATH .. "entities.forest")
-local Floor = require (RODA_PATH .. "entities.floor")
+local B2 = require (SRC_PATH .. "entities.b2")
+local Velvet = require (SRC_PATH .. "entities.velvet")
+local Forest = require (SRC_PATH .. "entities.forest")
+local Floor = require (SRC_PATH .. "entities.floor")
 
 local Game = Class{}
 

@@ -15,7 +15,7 @@ local Floor = require (SRC_PATH .. "entities.floor")
 local Game = Class{}
 
 function Game:init(engine)
-	local player = B2(Vector(0, 0))
+	local player = B2(engine.bus, Vector(0, 0))
 	local level = Forest(Vector(0, 0))
 	local floor = Floor(Vector(0, 70), 500, 20)
 

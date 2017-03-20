@@ -1,6 +1,5 @@
 require "env"
 
-local love = love
 local Roda = require "lib.roda"
 local Game = require "src.game"
 

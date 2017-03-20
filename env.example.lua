@@ -1,6 +1,6 @@
--- Global env variables
+GAME_DEBUG = true
+GAME_EDITOR = true
 
-DEBUG = true
-EDITOR = true
-SRC_PATH = "src." -- Source path
-LIB_PATH = "lib." -- Third party libraries path
+GAME_SRC = 'src.'
+GAME_LIB = 'lib.'
+GAME_ASSETS = 'assets.'

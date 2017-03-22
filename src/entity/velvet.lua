@@ -16,6 +16,7 @@ function velvet:initialize(bus, position)
 	self:add_component('rigidbody', Rigidbody(16, 32))
 end
 
+-- FIXME This doesnt work anymore
 function velvet:on_add()
 	local walk = Process()
 	walk.on_update = function (dt)

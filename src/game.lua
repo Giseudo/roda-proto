@@ -4,26 +4,31 @@ local PlayerSystem = require (RODA_SRC .. 'system.player')
 local InputSystem = require (RODA_SRC .. 'system.input')
 local PhysicsSystem = require (RODA_SRC .. 'system.physics')
 
-local B2 = require (GAME_SRC .. 'entity.b2')
-local Velvet = require (GAME_SRC .. 'entity.velvet')
-local Floor = require (GAME_SRC .. 'entity.floor')
+local AndroidActor = require (GAME_ASSETS .. 'prefabs.android_actor')
+local VelvetActor = require (GAME_ASSETS .. 'prefabs.velvet_actor')
+local FloorActor = require (GAME_ASSETS .. 'prefabs.floor_actor')
 
 local game = {}
 
-function game:new(engine)
+function game:new()
+	local android = AndroidActor(Vector(0, 0));
+
 	-- Init systems
-	engine.bus:emit('world/add', RenderSystem(engine.bus))
-	engine.bus:emit('world/add', PlayerSystem(engine.bus))
-	engine.bus:emit('world/add', PhysicsSystem(engine.bus))
-	engine.bus:emit('world/add', InputSystem(engine.bus))
+	Roda.bus:emit('world/add', RenderSystem())
+	Roda.bus:emit('world/add', PlayerSystem())
+	Roda.bus:emit('world/add', PhysicsSystem())
+	Roda.bus:emit('world/add', InputSystem())
 
 	-- Add entites to world
-	engine.bus:emit('world/add', B2(engine.bus, Vector(0, 0)))
-	engine.bus:emit('world/add', Floor(engine.bus, Vector(0, 70), 500, 20))
-	engine.bus:emit('world/add', Velvet(engine.bus, Vector(-100, -50)))
+	Roda.bus:emit('world/add', android)
+	Roda.bus:emit('world/add', FloorActor(Vector(0, 70), 500, 20))
+	Roda.bus:emit('world/add', VelvetActor(Vector(-100, -50)))
+
+	-- Set world target pawn
+	Roda.bus:emit('world/pawn', android)
 
 	-- Set physics gravity
-	engine.bus:emit('physics/gravity/set', Vector(0, 300))
+	Roda.bus:emit('physics/gravity/set', Vector(0, 300))
 
 	return self
 end

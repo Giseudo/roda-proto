@@ -1,20 +1,18 @@
 require "env"
-local engine = require "lib.roda"
-local Game = require "src.game"
-
-Roda = engine()
+require "lib.roda"
+require "src.game"
 
 function love.load()
-	love.graphics.setDefaultFilter("nearest", "nearest", 0)
-	local game = Game()
+	roda:initialize();
+	game:initialize();
 end
 
 function love.update(dt)
-	Roda:update(dt)
+	roda:update(dt)
 end
 
 function love.draw()
-	Roda:draw()
+	roda:draw()
 end
 
 function love.quit()

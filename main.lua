@@ -3,16 +3,18 @@ require "lib.roda"
 require "src.game"
 
 function love.load()
-	roda:initialize();
-	game:initialize();
+	Roda:run()
+	Game:initialize()
 end
 
 function love.update(dt)
-	roda:update(dt)
+	Roda:update(dt)
+	Game:update(dt)
 end
 
 function love.draw()
-	roda:draw()
+	Roda:draw()
+	Game:draw()
 end
 
 function love.quit()

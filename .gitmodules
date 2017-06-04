@@ -1,6 +1,3 @@
-[submodule "lib/tiny-ecs"]
-	path = lib/tiny-ecs
-	url = https://github.com/bakpakin/tiny-ecs.git
-[submodule "lib/imgui"]
-	path = lib/imgui
-	url = https://github.com/slages/love-imgui.git
+[submodule "roda"]
+	path = roda
+	url = https://github.com/Giseudo/roda.git

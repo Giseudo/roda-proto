@@ -1,10 +1,12 @@
+love.graphics.setDefaultFilter('nearest', 'nearest', 1)
+
 require "env"
-require "lib.roda"
+require "roda"
 require "src.game"
 
 function love.load()
 	Roda:run()
-	Game:initialize()
+	Game:run()
 end
 
 function love.update(dt)

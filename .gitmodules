@@ -1,11 +1,5 @@
-[submodule "Lib/roda"]
-	path = lib/roda
-	url = git@github.com:Giseudo/roda.git
 [submodule "lib/tiny-ecs"]
 	path = lib/tiny-ecs
-	url = https://github.com/bakpakin/tiny-ecs.git
-[submodule "lib/tiny"]
-	path = lib/tiny
 	url = https://github.com/bakpakin/tiny-ecs.git
 [submodule "lib/imgui"]
 	path = lib/imgui

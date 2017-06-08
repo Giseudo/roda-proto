@@ -8,6 +8,7 @@ local AnimationSystem = require (RODA_SRC .. 'system.animation')
 
 -- Entities
 local Player = require (RODA_SRC .. 'entity.player')
+local B2 = require (RODA_SRC .. 'entity.b2')
 local Platform = require (RODA_SRC .. 'entity.platform')
 
 Game = {}
@@ -18,9 +19,11 @@ function Game:run()
 	Roda.resources:load_shader('default', 'default/vertex.glsl', 'default/fragment.glsl')
 	Roda.resources:load_shader('blink', 'default/vertex.glsl', 'blink/fragment.glsl')
 	Roda.resources:load_shader('outline', 'default/vertex.glsl', 'outline/fragment.glsl')
+	Roda.resources:load_shader('glitch', 'default/vertex.glsl', 'glitch/fragment.glsl')
 
 	-- Create entities
 	self.player = Player(Vector(0, 0), Vector(16, 32))
+	self.b2 = B2(Vector(10, 0), Vector(16, 32))
 	self.platform1 = Platform(Vector(0, -8), Vector(512, 16))
 	self.platform2 = Platform(Vector(256, 56), Vector(512, 16))
 
@@ -34,6 +37,7 @@ function Game:run()
 
 	-- Add entities
 	Roda.world:addEntity(self.player)
+	Roda.world:addEntity(self.b2)
 	Roda.world:addEntity(self.platform1)
 	Roda.world:addEntity(self.platform2)
 end

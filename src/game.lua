@@ -5,11 +5,14 @@ local MovementSystem = require (RODA_SRC .. 'system.movement')
 local GravitySystem = require (RODA_SRC .. 'system.gravity')
 local RenderSystem = require (RODA_SRC .. 'system.render')
 local AnimationSystem = require (RODA_SRC .. 'system.animation')
+local TilemapSystem = require (RODA_SRC .. 'system.tilemap')
+local TilemapDebugSystem = require (RODA_SRC .. 'system.tilemap_debug')
 
 -- Entities
 local Player = require (RODA_SRC .. 'entity.player')
 local B2 = require (RODA_SRC .. 'entity.b2')
-local Platform = require (RODA_SRC .. 'entity.platform')
+local Grid = require (RODA_SRC .. 'entity.grid')
+local Tile = require (RODA_SRC .. 'entity.tile')
 
 Game = {}
 
@@ -24,8 +27,7 @@ function Game:run()
 	-- Create entities
 	self.player = Player(Vector(0, 0), Vector(16, 32))
 	self.b2 = B2(Vector(10, 0), Vector(16, 32))
-	self.platform1 = Platform(Vector(0, -8), Vector(512, 16))
-	self.platform2 = Platform(Vector(256, 56), Vector(512, 16))
+	self.grid = Grid(8, 8, 0)
 
 	-- Add systems
 	Roda.world:addSystem(GravitySystem())
@@ -34,12 +36,23 @@ function Game:run()
 	Roda.world:addSystem(CollisionDebugSystem())
 	Roda.world:addSystem(RenderSystem())
 	Roda.world:addSystem(AnimationSystem())
+	Roda.world:addSystem(TilemapSystem())
+	Roda.world:addSystem(TilemapDebugSystem())
 
 	-- Add entities
 	Roda.world:addEntity(self.player)
 	Roda.world:addEntity(self.b2)
-	Roda.world:addEntity(self.platform1)
-	Roda.world:addEntity(self.platform2)
+	Roda.world:addEntity(self.grid)
+	Roda.world:refresh()
+
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 0, 5, 0))
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 1, 5, 0))
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 2, 5, 0))
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 3, 5, 0))
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 4, 5, 0))
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 5, 5, 0))
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 6, 5, 0))
+	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 7, 5, 0))
 end
 
 function Game:update(dt)
@@ -66,6 +79,10 @@ function Game:events()
 			Roda.debug = false
 		elseif key == "d" and Roda.debug ~= true then
 			Roda.debug = true
+		end
+
+		if key == "t" then
+			Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 0, 0, 0))
 		end
 	end
 

@@ -3,6 +3,7 @@ uniform Image iChannel1;
 
 vec4 effect(vec4 fragColor, Image texture, vec2 fragCoord, vec2 screenPos)
 {
+	fragCoord.y = 1.0 - fragCoord.y;
 	vec2 uv = fragCoord.xy;
 	vec2 block = floor(fragCoord.xy / vec2(16));
 	vec2 uv_noise = block / vec2(64);

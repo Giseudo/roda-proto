@@ -49,6 +49,7 @@ function Game:run()
 	Roda.world:addEntity(self.grid)
 	Roda.world:refresh()
 
+
 	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 0, 5, 0))
 	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 1, 5, 0))
 	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 2, 5, 0))
@@ -60,11 +61,26 @@ function Game:run()
 
 	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 2, 6, 0))
 	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 3, 6, 0))
-	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 4, 6, 0))
-	Roda.bus:emit('tilemap/add', Tile('assets/images/terrain_01.png', 5, 6, 0))
+
+	Roda.bus:register('input/keyboard/pressed', function(key)
+		if key == 's' then
+			if self.dummy.controller.player == true then
+				self.b2.controller.player = true
+				self.dummy.controller.player = false
+			else
+				self.dummy.controller.player = true
+				self.b2.controller.player = false
+			end
+		end
+	end)
 end
 
 function Game:update(dt)
+	if self.dummy.controller.player == true then
+		Roda.camera:follow(self.dummy)
+	elseif self.b2.controller.player == true then
+		Roda.camera:follow(self.b2)
+	end
 end
 
 function Game:draw()
